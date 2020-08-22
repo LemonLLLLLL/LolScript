@@ -470,7 +470,7 @@ namespace LoLExample
                                                 }
                                             }
                                             
-                                            if (Components.VisualsComponent.DrawRangeCircle.Enabled)
+                                            if (Components.VisualsComponent.DrawRangeCircle.Enabled && (heroData.oObjTeam != lPdata.oObjTeam))
                                             {
                                                 CircleRendering.Render(finalMatrix, (heroData.oObjTeam == lPdata.oObjTeam) ? Components.VisualsComponent.RangeCircleColorAlly.Color : Components.VisualsComponent.RangeCircleColorNmy.Color, heroData.oObjAtkRange + 55.0f, heroData.oObjPos);
                                             }
