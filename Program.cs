@@ -472,7 +472,7 @@ namespace LoLExample
                                             
                                             if (heroData.oObjTeam != lPdata.oObjTeam)
                                             {
-                                                CircleRendering.Render(finalMatrix, (heroData.oObjTeam == lPdata.oObjTeam) ? Components.VisualsComponent.RangeCircleColorAlly.Color : Components.VisualsComponent.RangeCircleColorNmy.Color, heroData.oObjAtkRange + 55.0f, heroData.oObjPos);
+                                                CircleRendering.Render(finalMatrix, Components.VisualsComponent.RangeCircleColorNmy.Color, heroData.oObjAtkRange + 55.0f, heroData.oObjPos);
                                             }
 
                                         }
