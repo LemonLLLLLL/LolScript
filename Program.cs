@@ -141,13 +141,16 @@ namespace LoLExample
 
         class Components
         {
-            public static readonly MenuKeyBind MainAssemblyToggle = new MenuKeyBind("mainassemblytoggle", "Toggle the whole assembly effect by pressing key:", VirtualKeyCode.Delete, KeybindType.Toggle, true);
+            public static readonly MenuKeyBind MainAssemblyToggle = new MenuKeyBind("mainassemblytoggle", "Panic key: ", VirtualKeyCode.Delete, KeybindType.Toggle, true);
             public static class VisualsComponent
             {
-                public static readonly MenuBool DrawRangeCircle = new MenuBool("rngcircle", "Draw Range Circle around Champions", true);
-                public static readonly MenuColor RangeCircleColorAlly = new MenuColor("alliescirclecol", "Range Circle Allies Color", new SharpDX.Color(0, 255, 0, 100));
-                public static readonly MenuColor RangeCircleColorNmy = new MenuColor("enemiescirclecol", "Range Circle Enemies Color", new SharpDX.Color(255, 0, 0, 100));
-                public static readonly MenuBool DrawSpellTracker = new MenuBool("spelltrack", "Draw Spell Tracker for Champions", true);
+                public static readonly MenuBool DrawRangeCircleAlly = new MenuBool("rngcircleally", "Visualizar rango de campeones aliados", true);
+                public static readonly MenuColor RangeCircleColorAlly = new MenuColor("alliescirclecol", "Color del circulo", new SharpDX.Color(0, 255, 0, 100));
+                public static readonly MenuBool DrawRangeCircleEmy = new MenuBool("rngcircleemy", "Visualizar rango de campeones enemigos", true);
+                public static readonly MenuColor RangeCircleColorNmy = new MenuColor("enemiescirclecol", "Color del circulo", new SharpDX.Color(255, 0, 0, 100));
+                public static readonly MenuBool DrawSpellTracker = new MenuBool("spelltrack", "Visualizar enfriamiento de habilidades", true);
+                public static readonly MenuBool DrawInformationAlly = new MenuBool("spelltrack", "Mostrar información de los Aliado", true);
+                public static readonly MenuBool DrawInformationEmy = new MenuBool("spelltrack", "Mostrar información de los Enemigo", true);
             }
         }
 
@@ -155,10 +158,13 @@ namespace LoLExample
         {
             VisualsMenu = new Menu("visualsmenu", "Visuals Menu")
             {
-                Components.VisualsComponent.DrawRangeCircle,
+                Components.VisualsComponent.DrawRangeCircleAlly,
                 Components.VisualsComponent.RangeCircleColorAlly,
+                Components.VisualsComponent.DrawRangeCircleEmy,
                 Components.VisualsComponent.RangeCircleColorNmy,
                 Components.VisualsComponent.DrawSpellTracker,
+                Components.VisualsComponent.DrawInformationAlly,
+                Components.VisualsComponent.DrawInformationEmy,
             };
 
 
@@ -469,15 +475,29 @@ namespace LoLExample
                                                     Renderer.DrawFilledRect(pos2D.X - XposX + 121 + 4 + 23, pos2D.Y + YposY + 3 + 16, 23, 4, new Color(00, 0xFF, 00, 0xFF));
                                                 }
                                             }
-                                            
+
                                             if (heroData.oObjTeam != lPdata.oObjTeam)
                                             {
-                                                CircleRendering.Render(finalMatrix, Components.VisualsComponent.RangeCircleColorNmy.Color, heroData.oObjAtkRange + 55.0f, heroData.oObjPos);
+                                                if (Components.VisualsComponent.DrawInformationAlly.Enabled)
+                                                {
+                                                    Renderer.DrawText("Vida: " + (int)heroData.oObjHealth + " / " + (int)heroData.oObjMaxHealth, pos2D.X, pos2D.Y - 40, new Color(0xFF, 00, 00, 0xff));
+                                                    Renderer.DrawText("Mana: " + (int)heroData.oObjMana + " / " + (int)heroData.oObjMaxMana, pos2D.X, pos2D.Y - 20, new Color(0, 255, 255, 0xff));
+                                                }
+                                                if (Components.VisualsComponent.DrawRangeCircleEmy.Enabled)
+                                                    CircleRendering.Render(finalMatrix, Components.VisualsComponent.RangeCircleColorNmy.Color, heroData.oObjAtkRange + 55.0f, heroData.oObjPos);
                                             }
-
+                                            if (heroData.oObjTeam == lPdata.oObjTeam)
+                                            {
+                                                if (Components.VisualsComponent.DrawInformationAlly.Enabled)
+                                                {
+                                                    Renderer.DrawText("Vida: " + (int)heroData.oObjHealth + " / " + (int)heroData.oObjMaxHealth, pos2D.X, pos2D.Y - 40, new Color(0xFF, 00, 00, 0xff));
+                                                    Renderer.DrawText("Mana: " + (int)heroData.oObjMana + " / " + (int)heroData.oObjMaxMana, pos2D.X, pos2D.Y - 20, new Color(0, 255, 255, 0xff));
+                                                }
+                                                if(Components.VisualsComponent.DrawRangeCircleAlly.Enabled)
+                                                    CircleRendering.Render(finalMatrix, Components.VisualsComponent.RangeCircleColorAlly.Color, heroData.oObjAtkRange + 55.0f, heroData.oObjPos);
+                                            }
                                         }
                                     }
-
                                 }
                             }
                         }
