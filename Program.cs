@@ -149,8 +149,8 @@ namespace LoLExample
                 public static readonly MenuBool DrawRangeCircleEmy = new MenuBool("rngcircleemy", "Visualizar rango de campeones enemigos", true);
                 public static readonly MenuColor RangeCircleColorNmy = new MenuColor("enemiescirclecol", "Color del circulo", new SharpDX.Color(255, 0, 0, 100));
                 public static readonly MenuBool DrawSpellTracker = new MenuBool("spelltrack", "Visualizar enfriamiento de habilidades", true);
-                public static readonly MenuBool DrawInformationAlly = new MenuBool("spelltrack", "Mostrar información de los Aliado", true);
-                public static readonly MenuBool DrawInformationEmy = new MenuBool("spelltrack", "Mostrar información de los Enemigo", true);
+                public static readonly MenuBool DrawInformationAlly = new MenuBool("drawinfally", "Mostrar informacion de los Aliado", true);
+                public static readonly MenuBool DrawInformationEmy = new MenuBool("drawinfemy", "Mostrar informacion de los Enemigo", true);
             }
         }
 
