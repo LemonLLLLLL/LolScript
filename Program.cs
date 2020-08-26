@@ -480,8 +480,10 @@ namespace LoLExample
                                             {
                                                 if (Components.VisualsComponent.DrawInformationAlly.Enabled)
                                                 {
-                                                    Renderer.DrawText("Vida: " + (int)heroData.oObjHealth + " / " + (int)heroData.oObjMaxHealth, pos2D.X, pos2D.Y - 40, new Color(0xFF, 00, 00, 0xff));
-                                                    Renderer.DrawText("Mana: " + (int)heroData.oObjMana + " / " + (int)heroData.oObjMaxMana, pos2D.X, pos2D.Y - 20, new Color(0, 255, 255, 0xff));
+                                                    if (heroData.oObjMaxHealth > 0.0)
+                                                        Renderer.DrawText("Vida: " + (int)heroData.oObjHealth + " / " + (int)heroData.oObjMaxHealth, pos2D.X, pos2D.Y - 40, new Color(0xFF, 00, 00, 0xff));
+                                                    if (heroData.oObjMaxMana > 0.0)
+                                                        Renderer.DrawText("Mana: " + (int)heroData.oObjMana + " / " + (int)heroData.oObjMaxMana, pos2D.X, pos2D.Y - 20, new Color(0, 255, 255, 0xff));
                                                 }
                                                 if (Components.VisualsComponent.DrawRangeCircleEmy.Enabled)
                                                     CircleRendering.Render(finalMatrix, Components.VisualsComponent.RangeCircleColorNmy.Color, heroData.oObjAtkRange + 55.0f, heroData.oObjPos);
@@ -490,8 +492,10 @@ namespace LoLExample
                                             {
                                                 if (Components.VisualsComponent.DrawInformationAlly.Enabled)
                                                 {
-                                                    Renderer.DrawText("Vida: " + (int)heroData.oObjHealth + " / " + (int)heroData.oObjMaxHealth, pos2D.X, pos2D.Y - 40, new Color(0xFF, 00, 00, 0xff));
-                                                    Renderer.DrawText("Mana: " + (int)heroData.oObjMana + " / " + (int)heroData.oObjMaxMana, pos2D.X, pos2D.Y - 20, new Color(0, 255, 255, 0xff));
+                                                  if (heroData.oObjMaxHealth > 0.0)
+                                                        Renderer.DrawText("Vida: " + (int)heroData.oObjHealth + " / " + (int)heroData.oObjMaxHealth, pos2D.X, pos2D.Y - 40, new Color(0xFF, 00, 00, 0xff));
+                                                    if (heroData.oObjMaxMana > 0.0)
+                                                        Renderer.DrawText("Mana: " + (int)heroData.oObjMana + " / " + (int)heroData.oObjMaxMana, pos2D.X, pos2D.Y - 20, new Color(0, 255, 255, 0xff));
                                                 }
                                                 if(Components.VisualsComponent.DrawRangeCircleAlly.Enabled)
                                                     CircleRendering.Render(finalMatrix, Components.VisualsComponent.RangeCircleColorAlly.Color, heroData.oObjAtkRange + 55.0f, heroData.oObjPos);
