@@ -281,18 +281,9 @@ namespace LoLExample
 
         private static void OnRenderer(int fps, EventArgs args)
         {
-            if (!gameProcessExists) {
-			Console.WriteLine("gameProcessExists");
-		    return; //process is dead, don't bother drawing
-	    }
-            if ((!isGameOnTop) && (!isOverlayOnTop)) {
-			Console.WriteLine("isOverlayOnTop");
-		    return; //process is dead, don't bother drawing
-	    }
-            if (!Components.MainAssemblyToggle.Enabled) {
-			Console.WriteLine("MainAssemblyToggle");
-		    return; //process is dead, don't bother drawing
-	    }
+            if (!gameProcessExists) return; //process is dead, don't bother drawing
+            if ((!isGameOnTop) && (!isOverlayOnTop)) return; //process is dead, don't bother drawing
+            if (!Components.MainAssemblyToggle.Enabled) return; //process is dead, don't bother drawing
 
             if (oRenderer != IntPtr.Zero)
             {
