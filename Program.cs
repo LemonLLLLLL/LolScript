@@ -230,27 +230,27 @@ namespace LoLExample
                         {
                             if (oLocalPlayer == IntPtr.Zero)
                             {
-                                oLocalPlayer = (IntPtr)(GameBase.ToInt64() + 0x3507098); //A1 ? ? ? ? 85 C0 74 07 05 ? ? ? ? EB 02 33 C0 56
+                                oLocalPlayer = (IntPtr)(GameBase.ToInt64() + 0x034fa11c); //A1 ? ? ? ? 85 C0 74 07 05 ? ? ? ? EB 02 33 C0 56
                                 Console.WriteLine($"oLocalPlayer: {oLocalPlayer.ToString("X")}");
                             }
                             if (oHeroManager == IntPtr.Zero)
                             {
-                                oHeroManager = (IntPtr)(GameBase.ToInt64() + 0x1C6848C); //FF 52 30 8B 4F 04 8B 35 ? ? ? ? (Champion_Kills) string
+                                oHeroManager = (IntPtr)(GameBase.ToInt64() + 0x001b0a90); //FF 52 30 8B 4F 04 8B 35 ? ? ? ? (Champion_Kills) string
                                 Console.WriteLine($"oObjManager: {oHeroManager.ToString("X")}");
                             }
                             if (oRenderer == IntPtr.Zero)
                             {
-                                oRenderer = (IntPtr)(GameBase.ToInt64() + 0x352FD44); //8B 15 ? ? ? ? 83 EC 08 F3
+                                oRenderer = (IntPtr)(GameBase.ToInt64() + 0x03522e34); //8B 15 ? ? ? ? 83 EC 08 F3
                                 Console.WriteLine($"oRenderer: {oRenderer.ToString("X")}");
 							}
                             if (oDrawCircle == IntPtr.Zero)
                             {
-                                oDrawCircle = (IntPtr)(GameBase.ToInt64() + 0x51D940); //E8 ? ? ? ? 83 C4 1C 8B 7C 24 28 // sub_[offset]
+                                oDrawCircle = (IntPtr)(GameBase.ToInt64() + 0x00505ca0); //E8 ? ? ? ? 83 C4 1C 8B 7C 24 28 // sub_[offset]
                                 Console.WriteLine($"oDrawCircle: {oDrawCircle.ToString("X")}");
                             }
                             if (oGameTime == IntPtr.Zero)
                             {
-                                oGameTime = (IntPtr)(GameBase.ToInt64() + 0x34FF228); //D9 5C 24 14 F3 0F 10 4C 24 14 0F 57 C0
+                                oGameTime = (IntPtr)(GameBase.ToInt64() + 0x034f22f0); //D9 5C 24 14 F3 0F 10 4C 24 14 0F 57 C0
                                 Console.WriteLine($"oGameTime: {oGameTime.ToString("X")}");
 								
                             }
