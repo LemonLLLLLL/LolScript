@@ -240,17 +240,17 @@ namespace LoLExample
                             }
                             if (oRenderer == IntPtr.Zero)
                             {
-                                oRenderer = (IntPtr)(GameBase.ToInt64() + 0x03522e34); //8B 15 ? ? ? ? 83 EC 08 F3
+                                oRenderer = (IntPtr)(GameBase.ToInt64() + 0x3522E34); //8B 15 ? ? ? ? 83 EC 08 F3
                                 Console.WriteLine($"oRenderer: {oRenderer.ToString("X")}");
 							}
                             if (oDrawCircle == IntPtr.Zero)
                             {
-                                oDrawCircle = (IntPtr)(GameBase.ToInt64() + 0x00505ca0); //E8 ? ? ? ? 83 C4 1C 8B 7C 24 28 // sub_[offset]
+                                oDrawCircle = (IntPtr)(GameBase.ToInt64() + 0x505ca0); //E8 ? ? ? ? 83 C4 1C 8B 7C 24 28 // sub_[offset]
                                 Console.WriteLine($"oDrawCircle: {oDrawCircle.ToString("X")}");
                             }
                             if (oGameTime == IntPtr.Zero)
                             {
-                                oGameTime = (IntPtr)(GameBase.ToInt64() + 0x034f22f0); //D9 5C 24 14 F3 0F 10 4C 24 14 0F 57 C0
+                                oGameTime = (IntPtr)(GameBase.ToInt64() + 0x34F22F0); //D9 5C 24 14 F3 0F 10 4C 24 14 0F 57 C0
                                 Console.WriteLine($"oGameTime: {oGameTime.ToString("X")}");
 								
                             }
@@ -323,7 +323,7 @@ namespace LoLExample
                                             //Console.WriteLine(e);
                                             continue;
                                         }
-
+					Console.WriteLine($"Health: {heroData.oObjHealth}");
                                         if ((heroData.oObjVisibility == 1) && (heroData.oObjTeam == 100 || heroData.oObjTeam == 200) && (heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000) && (heroData.oObjMaxHealth > 99) && (heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) && (heroData.oObjPos.Y != 1.0f) && (heroData.oObjPos.X != 1.0f) && (heroData.oObjPos.Z != 1.0f)) //ghetto validity check
                                         {
                                             var QData = heroData.GetSpellData(spellSlot._Q);
