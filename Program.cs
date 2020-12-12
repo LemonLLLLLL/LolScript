@@ -299,13 +299,11 @@ namespace LoLExample
                     var localPlayer = Memory.ReadPointer(processHandle, oLocalPlayer, isWow64Process);
                     if (localPlayer != IntPtr.Zero)
                     {
-			Console.WriteLine("localPlayer");
                         gameTime = Memory.ReadFloat(processHandle, oGameTime);
                         var lPdata = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, localPlayer, isWow64Process);
                         var heroManager = Memory.ReadPointer(processHandle, oHeroManager, isWow64Process);
                         if (heroManager != IntPtr.Zero)
                         {
-			    Console.WriteLine("heroManager");
                             var heroList = Memory.ReadPointer(processHandle, (IntPtr)(heroManager.ToInt64() + 4), isWow64Process);
                             if (heroList != IntPtr.Zero)
                             {
@@ -322,7 +320,6 @@ namespace LoLExample
                                         }
                                         catch (Exception e)
                                         {
-                                            Console.WriteLine(e);
                                             continue;
                                         }
                                         if ((heroData.oObjVisibility == 1) && (heroData.oObjTeam == 100 || heroData.oObjTeam == 200) && (heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000) && (heroData.oObjMaxHealth > 99) && (heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) && (heroData.oObjPos.Y != 1.0f) && (heroData.oObjPos.X != 1.0f) && (heroData.oObjPos.Z != 1.0f)) //ghetto validity check
