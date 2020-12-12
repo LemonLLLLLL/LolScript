@@ -235,7 +235,7 @@ namespace LoLExample
                             }
                             if (oHeroManager == IntPtr.Zero)
                             {
-                                oHeroManager = (IntPtr)(GameBase.ToInt64() + 0x001b0a90); //FF 52 30 8B 4F 04 8B 35 ? ? ? ? (Champion_Kills) string
+                                oHeroManager = (IntPtr)(GameBase.ToInt64() + 0x1C5D610); //FF 52 30 8B 4F 04 8B 35 ? ? ? ? (Champion_Kills) string
                                 Console.WriteLine($"oObjManager: {oHeroManager.ToString("X")}");
                             }
                             if (oRenderer == IntPtr.Zero)
