@@ -281,9 +281,18 @@ namespace LoLExample
 
         private static void OnRenderer(int fps, EventArgs args)
         {
-            if (!gameProcessExists) return; //process is dead, don't bother drawing
-            if ((!isGameOnTop) && (!isOverlayOnTop)) return; //if game and overlay are not on top, don't draw
-            if (!Components.MainAssemblyToggle.Enabled) return; //main menu boolean to toggle the cheat on or off
+            if (!gameProcessExists) {
+			Console.WriteLine("gameProcessExists");
+		    return; //process is dead, don't bother drawing
+	    }
+            if ((!isGameOnTop) && (!isOverlayOnTop)) {
+			Console.WriteLine("isOverlayOnTop");
+		    return; //process is dead, don't bother drawing
+	    }
+            if (!Components.MainAssemblyToggle.Enabled) {
+			Console.WriteLine("MainAssemblyToggle");
+		    return; //process is dead, don't bother drawing
+	    }
 
             if (oRenderer != IntPtr.Zero)
             {
@@ -299,19 +308,23 @@ namespace LoLExample
                     var localPlayer = Memory.ReadPointer(processHandle, oLocalPlayer, isWow64Process);
                     if (localPlayer != IntPtr.Zero)
                     {
+			Console.WriteLine("yes localPlayer");
                         gameTime = Memory.ReadFloat(processHandle, oGameTime);
                         var lPdata = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, localPlayer, isWow64Process);
                         var heroManager = Memory.ReadPointer(processHandle, oHeroManager, isWow64Process);
                         if (heroManager != IntPtr.Zero)
                         {
+				Console.WriteLine("yes heroManager");
                             var heroList = Memory.ReadPointer(processHandle, (IntPtr)(heroManager.ToInt64() + 4), isWow64Process);
                             if (heroList != IntPtr.Zero)
                             {
+				Console.WriteLine("yes heroList");
                                 for (uint i = 0; i <= 12; i++)
                                 {
                                     var heroPtr = Memory.ReadPointer(processHandle, (IntPtr)(heroList.ToInt64() + i * 4), isWow64Process);
                                     if (heroPtr != IntPtr.Zero)
                                     {
+					Console.WriteLine("yes heroPtr");
                                         GameObjectStruct heroData;
                                         //var heroData = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, heroPtr, isWow64Process);
                                         try
@@ -320,10 +333,9 @@ namespace LoLExample
                                         }
                                         catch (Exception e)
                                         {
-                                            //Console.WriteLine(e);
+                                            Console.WriteLine(e);
                                             continue;
                                         }
-					Console.WriteLine($"Health: {heroData.oObjHealth}");
                                         if ((heroData.oObjVisibility == 1) && (heroData.oObjTeam == 100 || heroData.oObjTeam == 200) && (heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000) && (heroData.oObjMaxHealth > 99) && (heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) && (heroData.oObjPos.Y != 1.0f) && (heroData.oObjPos.X != 1.0f) && (heroData.oObjPos.Z != 1.0f)) //ghetto validity check
                                         {
                                             var QData = heroData.GetSpellData(spellSlot._Q);
