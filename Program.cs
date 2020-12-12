@@ -299,23 +299,21 @@ namespace LoLExample
                     var localPlayer = Memory.ReadPointer(processHandle, oLocalPlayer, isWow64Process);
                     if (localPlayer != IntPtr.Zero)
                     {
-			Console.WriteLine("yes localPlayer");
+			Console.WriteLine("localPlayer");
                         gameTime = Memory.ReadFloat(processHandle, oGameTime);
                         var lPdata = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, localPlayer, isWow64Process);
                         var heroManager = Memory.ReadPointer(processHandle, oHeroManager, isWow64Process);
                         if (heroManager != IntPtr.Zero)
                         {
-				Console.WriteLine("yes heroManager");
+			    Console.WriteLine("heroManager");
                             var heroList = Memory.ReadPointer(processHandle, (IntPtr)(heroManager.ToInt64() + 4), isWow64Process);
                             if (heroList != IntPtr.Zero)
                             {
-				Console.WriteLine("yes heroList");
                                 for (uint i = 0; i <= 12; i++)
                                 {
                                     var heroPtr = Memory.ReadPointer(processHandle, (IntPtr)(heroList.ToInt64() + i * 4), isWow64Process);
                                     if (heroPtr != IntPtr.Zero)
                                     {
-					Console.WriteLine("yes heroPtr");
                                         GameObjectStruct heroData;
                                         //var heroData = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, heroPtr, isWow64Process);
                                         try
