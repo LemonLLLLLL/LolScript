@@ -304,15 +304,8 @@ namespace LoLExample
                                 if (heroPtr != IntPtr.Zero)
                                 {
                                     var heroData = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, heroPtr, isWow64Process);
-
-                                    Console.WriteLine($"oObjVisibility: {heroData.oObjVisibility.ToString("D")}");
-                                    Console.WriteLine($"oObjTeam: {heroData.oObjTeam.ToString("D")}");
-                                    Console.WriteLine($"oObjHealth: {heroData.oObjHealth.ToString("f")}");
-                                    Console.WriteLine($"oObjMaxHealth: {heroData.oObjMaxHealth.ToString("f")}");
-                                    Console.WriteLine($"oObjArmor: {heroData.oObjArmor.ToString("f")}");
-                                    Console.WriteLine($"oObjPos: {heroData.oObjPos.ToString("f")}");
                                     
-                                    if ((heroData.oObjVisibility == 1) && (heroData.oObjTeam == 100 || heroData.oObjTeam == 200) && (heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000) && (heroData.oObjMaxHealth > 99) && (heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) && (heroData.oObjPos.Y != 0.0f) && (heroData.oObjPos.X != 0.0f) && (heroData.oObjPos.Z != 0.0f)) //ghetto validity check
+                                    if ((heroData.oObjVisibility == 1) && (heroData.oObjTeam == 100 || heroData.oObjTeam == 200) && (heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000)/* && (heroData.oObjMaxHealth > 99)*/ && (heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) && (heroData.oObjPos.Y != 0.0f) && (heroData.oObjPos.X != 0.0f) && (heroData.oObjPos.Z != 0.0f)) //ghetto validity check
                                     {
                                         var QData = heroData.GetSpellData(spellSlot._Q);
                                         var WData = heroData.GetSpellData(spellSlot._W);
