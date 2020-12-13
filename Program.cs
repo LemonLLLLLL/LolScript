@@ -83,28 +83,28 @@ namespace LoLExample
             public UInt32 oObjNetworkID;
             [FieldOffset(0x1D8)]
             public Vector3 oObjPos;
-            [FieldOffset(0x450)]
+            [FieldOffset(0x270)]
             public byte oObjVisibility;
-            [FieldOffset(0xFA8)]
+            [FieldOffset(0xD98)]
             public float oObjHealth;
-            [FieldOffset(0xFB8)]
+            [FieldOffset(0xDA8)]
             public float oObjMaxHealth;
-            [FieldOffset(0x47C)]
+            [FieldOffset(0x298)]
             public float oObjMana;
-            [FieldOffset(0x48C)]
+            [FieldOffset(0x2A8)]
             public float oObjMaxMana;
-            [FieldOffset(0x1494)]
+            [FieldOffset(0x1278)]
             public float oObjArmor;
-            [FieldOffset(0x148C)]
+            [FieldOffset(0x1290)]
             public float oObjMoveSpeed;
-            [FieldOffset(0x14B4)]
+            [FieldOffset(0x1298)]
             public float oObjAtkRange;
 
             public string oObjChampionName
             {
                 get
                 {
-                    return Memory.ReadString(processHandle, (IntPtr)(this.baseOffs + 0x35BC), false);
+                    return Memory.ReadString(processHandle, (IntPtr)(this.baseOffs + 0x310C), false);
                 }
             }
 
@@ -237,22 +237,22 @@ namespace LoLExample
                         {
                             if (oLocalPlayer == IntPtr.Zero)
                             {
-                                oLocalPlayer = (IntPtr)(GameBase.ToInt64() + 0x34FF634); //A1 ? ? ? ? 85 C0 74 07 05 ? ? ? ? EB 02 33 C0 56
+                                oLocalPlayer = (IntPtr)(GameBase.ToInt64() + 0x34FA11C); //A1 ? ? ? ? 85 C0 74 07 05 ? ? ? ? EB 02 33 C0 56
                                 Console.WriteLine($"oLocalPlayer: {oLocalPlayer.ToString("X")}");
                             }
                             if (oHeroManager == IntPtr.Zero)
                             {
-                                oHeroManager = (IntPtr)(GameBase.ToInt64() + 0x28A8FFC); //8B 35 ? ? ? ? 0F 57 ED 57 8B FB
+                                oHeroManager = (IntPtr)(GameBase.ToInt64() + 0x1C5D610); //8B 35 ? ? ? ? 0F 57 ED 57 8B FB
                                 Console.WriteLine($"oObjManager: {oHeroManager.ToString("X")}");
                             }
                             if (oRenderer == IntPtr.Zero)
                             {
-                                oRenderer = (IntPtr)(GameBase.ToInt64() + 0x35269A0); //8B 15 ? ? ? ? 83 EC 08 F3
+                                oRenderer = (IntPtr)(GameBase.ToInt64() + 0x3522E34); //8B 15 ? ? ? ? 83 EC 08 F3
                                 Console.WriteLine($"oRenderer: {oRenderer.ToString("X")}");
                             }
                             if (oGameTime == IntPtr.Zero)
                             {
-                                oGameTime = (IntPtr)(GameBase.ToInt64() + 0x34F7A7C); //D9 5C 24 14 F3 0F 10 4C 24 14 0F 57 C0
+                                oGameTime = (IntPtr)(GameBase.ToInt64() + 0x34F22F0); //D9 5C 24 14 F3 0F 10 4C 24 14 0F 57 C0
                                 Console.WriteLine($"oGameTime: {oGameTime.ToString("X")}");
                             }
                         }
