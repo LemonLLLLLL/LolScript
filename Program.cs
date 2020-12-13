@@ -305,14 +305,6 @@ namespace LoLExample
                                 {
                                     var heroData = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, heroPtr, isWow64Process);
 
-                                    if(heroData.oObjVisibility == 1){
-                                      Console.WriteLine("failed oObjVisibility");
-                                    }
-
-                                    if((heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000)){
-                                      Console.WriteLine("failed oObjHealth");
-                                    }
-
                                     if ((heroData.oObjVisibility == 1) && (heroData.oObjTeam == 100 || heroData.oObjTeam == 200) && (heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000) && (heroData.oObjMaxHealth > 99) && (heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) && (heroData.oObjPos.Y != 0.0f) && (heroData.oObjPos.X != 0.0f) && (heroData.oObjPos.Z != 0.0f)) //ghetto validity check
                                     {
                                         var QData = heroData.GetSpellData(spellSlot._Q);
@@ -322,11 +314,15 @@ namespace LoLExample
                                         var DData = heroData.GetSpellData(spellSlot.SUMMONER_1);
                                         var FData = heroData.GetSpellData(spellSlot.SUMMONER_2);
 
+                                        Console.WriteLine("Check #1");
+                                        
                                         Vector2 pos2D;
                                         if (Renderer.WorldToScreen(heroData.oObjPos, out pos2D, finalMatrix, wndMargins, wndSize, W2SType.TypeOGL))
                                         {
+                                            Console.WriteLine("Check #2");
                                             if (Components.VisualsComponent.DrawSpellTracker.Enabled)
                                             {
+                                                Console.WriteLine("Check #3");
                                                 Renderer.DrawFilledRect(pos2D.X - XposX - 5 - 1, pos2D.Y + YposY + 3 + 12 - 1, 118 + 2, 12 + 2, new Color(00, 00, 00, 0x7A)); //whole bar
                                                 Renderer.DrawFilledRect(pos2D.X - XposX + 3 + 27 * 0, pos2D.Y + YposY + 3 + 16, 23, 4, new Color(00, 00, 00, 0xAA)); //spell bars
 
