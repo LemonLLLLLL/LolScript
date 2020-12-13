@@ -305,14 +305,14 @@ namespace LoLExample
                                 {
                                     var heroData = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, heroPtr, isWow64Process);
 
-                                    if(heroData.oObjVisibility != 1){
+                                    if(heroData.oObjVisibility == 1){
                                       Console.WriteLine("failed oObjVisibility");
                                     }
 
-                                    if(!(heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000)){
+                                    if((heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000)){
                                       Console.WriteLine("failed oObjHealth");
                                     }
-                                    
+
                                     if ((heroData.oObjVisibility == 1) && (heroData.oObjTeam == 100 || heroData.oObjTeam == 200) && (heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000) && (heroData.oObjMaxHealth > 99) && (heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) && (heroData.oObjPos.Y != 0.0f) && (heroData.oObjPos.X != 0.0f) && (heroData.oObjPos.Z != 0.0f)) //ghetto validity check
                                     {
                                         var QData = heroData.GetSpellData(spellSlot._Q);
