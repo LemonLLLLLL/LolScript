@@ -305,26 +305,8 @@ namespace LoLExample
                                 {
                                     var heroData = SDKUtil.ReadStructureEx<GameObjectStruct>(processHandle, heroPtr, isWow64Process);
 
-                                    if(heroData.oObjVisibility == 1){
-                                        Console.WriteLine("#1");
-                                    }
-                                    if(heroData.oObjTeam == 100 || heroData.oObjTeam == 200) {
-                                        Console.WriteLine("#2");
-                                    }
-                                    if(heroData.oObjHealth > 0.1 && heroData.oObjHealth < 10000) {
-                                        Console.WriteLine("#3");
-                                    }   
-                                    if(heroData.oObjMaxHealth > 99) {
-                                        Console.WriteLine("#4");
-                                    }
-                                    else {
-                                        Console.WriteLine("#5");
-                                    }
-                                    if(heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) {
-                                        Console.WriteLine("#6");
-                                    }
-                                    if(!((heroData.oObjPos.Y != 0.0f) && (heroData.oObjPos.X != 0.0f) && (heroData.oObjPos.Z != 0.0f))) {
-                                        Console.WriteLine("#7");
+                                    if(heroData.oObjMaxHealth > 99){
+                                      Console.WriteLine("#4");
                                     }
                                     
                                     if ((heroData.oObjVisibility == 1) && (heroData.oObjTeam == 100 || heroData.oObjTeam == 200) && (heroData.oObjHealth > 0.1) && (heroData.oObjHealth < 10000) && (heroData.oObjMaxHealth > 99) && (heroData.oObjArmor > 0) && (heroData.oObjArmor < 1000) && (heroData.oObjPos.Y != 0.0f) && (heroData.oObjPos.X != 0.0f) && (heroData.oObjPos.Z != 0.0f)) //ghetto validity check
