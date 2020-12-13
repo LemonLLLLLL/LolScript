@@ -109,7 +109,7 @@ namespace LoLExample
 
             public SpellDataStruct GetSpellData(spellSlot splSlot)
             {
-                var ptr = Memory.ReadPointer(processHandle, (IntPtr)(this.baseOffs + 0x2B08 + 0x508 + (uint)splSlot*4),isWow64Process);
+                var ptr = Memory.ReadPointer(processHandle, (IntPtr)(this.baseOffs + 0x26E8 + 0x478 + (uint)splSlot*4),isWow64Process);
                 return SDKUtil.ReadStructure<SpellDataStruct>(processHandle, ptr);
             }
 
