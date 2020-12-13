@@ -241,7 +241,7 @@ namespace LoLExample
                             }
                             if (oHeroManager == IntPtr.Zero)
                             {
-                                oHeroManager = (IntPtr)(GameBase.ToInt64() + 0x1C5D610); //8B 35 ? ? ? ? 0F 57 ED 57 8B FB
+                                oHeroManager = (IntPtr)(GameBase.ToInt64() + 0x1C5B580); //8B 35 ? ? ? ? 0F 57 ED 57 8B FB
                                 Console.WriteLine($"oObjManager: {oHeroManager.ToString("X")}");
                             }
                             if (oRenderer == IntPtr.Zero)
